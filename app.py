@@ -13,12 +13,10 @@ def create_app(config_class=Config):
     app.register_blueprint(checkout)
     app.register_blueprint(webhook)
 
+    # @app.route('/')
+    # def hello_world():
+    #     return 'Hello, World!'
     # Adding Content Security Policy to load all content either locally or from omise.co.
-    Talisman(
-        app,
-        content_security_policy={
-            "default-src": "'unsafe-inline' 'self' *.amazonaws.com *.omise.co"
-        },
-    )
+    Talisman(app)
 
     return app
